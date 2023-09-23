@@ -110,6 +110,6 @@ def run_airport(payload):
             "numberOfRequests": result["total_number_of_requests"]
         })
 
-        break
+        # break
 
     return results
