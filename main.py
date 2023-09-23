@@ -25,7 +25,6 @@ def read_root():
     return {"Hello": "World"}
 
 
-
 @app.post('/airport')
 async def airport(request: Request):
     payload = await request.json()
@@ -36,7 +35,7 @@ async def airport(request: Request):
     results = run_airport(payload)
 
     print("\n\n")
-    print(f"[+] Result Returned {json5.dumps(jsonable_encoder(results))}")
+    print(f"[+] Result Returned {json.dumps(jsonable_encoder(results))}")
 
     return json.dumps(jsonable_encoder(results))
 
