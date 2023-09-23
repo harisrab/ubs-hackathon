@@ -1,3 +1,4 @@
+import json5
 from typing import Optional
 
 from challanges.airport import run_airport
@@ -24,6 +25,7 @@ def read_root():
     return {"Hello": "World"}
 
 
+
 @app.post('/airport')
 async def airport(request: Request):
     payload = await request.json()
@@ -36,6 +38,6 @@ async def airport(request: Request):
     print("\n\n")
     print(f"[+] Result Returned {results}")
 
-    # return results
+    return json5.dumps(jsonable_encoder(results))
 
-    return JSONResponse(content=jsonable_encoder(results), media_type="application/json")
+    # return JSONResponse(content=jsonable_encoder(results), media_type="application/json")
