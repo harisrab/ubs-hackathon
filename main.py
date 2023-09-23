@@ -14,10 +14,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/test")
+@app.get("/")
 def read_root():
     return {"Hello": "World"}
 
+    
 
 @app.post('/airport')
 def airport():
