@@ -73,12 +73,12 @@ def prioritisation_function(passengers, cut_off_time):
         print("Heap: ", heap)
 
         departure_time = p.askTimeToDeparture()
-        heapq.heappush(heap, (p, departure_time))
+        heapq.heappush(heap, (departure_time, p))
 
-    while heap and heap[0][1] < cut_off_time:
+    while heap and heap[0][0] < cut_off_time:
         heapq.heappop(heap)
 
-    return [p for p, _ in heap]
+    return [p for _, p in heap]
 
 
 def run_airport(payload):
