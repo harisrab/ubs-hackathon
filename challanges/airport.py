@@ -83,7 +83,7 @@ def prioritisation_function(passengers, cut_off_time):
         # Remove and return the smallest departure time from the heap
         _, p = heapq.heappop(heap)
         # Ask the passenger to confirm they are late
-        p.askTimeToDeparture()
+        # p.askTimeToDeparture()
 
         # print("Popping off: ", p.__dict__)
 
@@ -109,5 +109,7 @@ def run_airport(payload):
             "sortedDepartureTimes": result['prioritised_filtered_list'],
             "numberOfRequests": result["total_number_of_requests"]
         })
+
+        break
 
     return results
