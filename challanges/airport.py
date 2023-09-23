@@ -70,17 +70,17 @@ def prioritisation_function(passengers, cut_off_time):
     sorted_passengers = sorted(
         passengers, key=lambda passenger: passenger.askTimeToDeparture())
     
-    for eachPerson in sorted_passengers:
-        print(eachPerson.__dict__)
+    # for eachPerson in sorted_passengers:
+    #     print(eachPerson.__dict__)
 
-    print("\n\n")
+    # print("\n\n")
     while sorted_passengers and sorted_passengers[0].askTimeToDeparture() < cut_off_time:
         p = sorted_passengers.pop(0)
 
-        print("Popped Off: ", p.__dict__)
+        # print("Popped Off: ", p.__dict__)
 
-    for eachPerson in sorted_passengers:
-        print(eachPerson.__dict__)
+    # for eachPerson in sorted_passengers:
+    #     print(eachPerson.__dict__)
 
     return sorted_passengers
 
