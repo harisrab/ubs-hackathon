@@ -35,8 +35,8 @@ async def airport(request: Request):
     results = run_airport(payload)
 
     print("\n\n")
-    print(f"[+] Result Returned {json.dumps(jsonable_encoder(results))}")
+    print(f"[+] Result Returned {results}")
 
-    return json.dumps(jsonable_encoder(results))
+    return results
 
     # return JSONResponse(content=jsonable_encoder(results), media_type="application/json")
