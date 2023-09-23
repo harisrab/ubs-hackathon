@@ -1,6 +1,8 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
+
+from challanges.airport import run_airport
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -14,12 +16,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
-    
 
 @app.post('/airport')
-def airport():
-    pass
+async def airport(request: Request):
+    payload = await request.json()
+
+    return run_airport(payload)
