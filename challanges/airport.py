@@ -68,7 +68,7 @@ def prioritisation_function(passengers, cut_off_time):
     """
 
     # Create a heap with each passenger's departure time and the passenger object
-    heap = [(p.askTimeToDeparture(), p) for p in passengers]
+    heap = [p for p in passengers]
 
     # print("Before Heapify: ", heap)
     # print("\n")
@@ -79,9 +79,9 @@ def prioritisation_function(passengers, cut_off_time):
     # print("After Heapify: ", heap)
 
     # Continue until the heap is empty or the smallest departure time is greater than the cut-off time
-    while heap and heap[0][0] < cut_off_time:
+    while heap and heap[0].askTimeToDeparture() < cut_off_time:
         # Remove and return the smallest departure time from the heap
-        _, p = heapq.heappop(heap)
+        p = heapq.heappop(heap)
         # Ask the passenger to confirm they are late
         # p.askTimeToDeparture()
 
@@ -90,7 +90,7 @@ def prioritisation_function(passengers, cut_off_time):
     # print("\n")
     # print("After Filtering: ", heap)
     # Return the remaining passengers in the heap
-    return [p for _, p in heap]
+    return [p for p in heap]
 
 
 def run_airport(payload):
