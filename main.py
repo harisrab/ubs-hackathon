@@ -28,8 +28,12 @@ def read_root():
 async def airport(request: Request):
     payload = await request.json()
 
+    print(f"[+] Payload Received {payload}")
+    print("\n\n")
+
     results = run_airport(payload)
 
-    return results
+    print("\n\n")
+    print(f"[+] Result Returned {results}")
 
-    # return JSONResponse(content=jsonable_encoder(results), media_type="application/json")
+    return results

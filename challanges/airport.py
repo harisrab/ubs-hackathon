@@ -41,8 +41,6 @@ def execute(prioritisation_function, passenger_data, cut_off_time):
     for i in range(len(passengers)):
         totalNumberOfRequests += passengers[i].getNumberOfRequests()
 
-    print("totalNumberOfRequests: " + str(totalNumberOfRequests))
-
     prioritised_filtered_list = []
     for i in range(len(prioritised_and_filtered_passengers)):
         prioritised_filtered_list.append(
@@ -87,7 +85,6 @@ def prioritisation_function(passengers, cut_off_time):
 
 
 def run_airport(payload):
-    print(f"[+] Payload Recieved {payload}\n\n")
 
     results = []
 
@@ -103,11 +100,5 @@ def run_airport(payload):
             "sortedDepartureTimes": result['prioritised_filtered_list'],
             "numberOfRequests": result["total_number_of_requests"]
         })
-
-        # print({
-        #     "id": eachPayload["id"],
-        #     "sortedDepartureTimes": result['prioritised_filtered_list'],
-        #     "numberOfRequests": result["total_number_of_requests"]
-        # })
 
     return json.dumps(results)
