@@ -19,8 +19,8 @@ class Passenger:
     def getNumberOfRequests(self):
         return self.numberOfRequests
 
-    # def __lt__(self, other):
-    #     return self.departureTime < other.departureTime
+    def __lt__(self, other):
+        return self.askTimeToDeparture() < other.askTimeToDeparture()
 
 
 def execute(prioritisation_function, passenger_data, cut_off_time):
@@ -67,35 +67,18 @@ def prioritisation_function(passengers, cut_off_time):
     list: A list of prioritised Passenger objects.
     """
 
-    sorted_passengers = sorted(
-        passengers, key=lambda passenger: passenger.askTimeToDeparture())
-    
-    # for eachPerson in sorted_passengers:
-    #     print(eachPerson.__dict__)
+    # Create a heap with each passenger's departure time and the passenger object
+    heap = [p for p in passengers]
 
-    # print("\n\n")
-    while sorted_passengers and sorted_passengers[0].askTimeToDeparture() < cut_off_time:
-        p = sorted_passengers.pop(0)
+    # Transform list x into a heap
+    heapq.heapify(heap)
 
-        # print("Popped Off: ", p.__dict__)
+    # Continue until the heap is empty or the smallest departure time is greater than the cut-off time
+    while heap and heap[0].askTimeToDeparture() < cut_off_time:
+        # Remove and return the smallest departure time from the heap
+        p = heapq.heappop(heap)
 
-    # for eachPerson in sorted_passengers:
-    #     print(eachPerson.__dict__)
-
-    return sorted_passengers
-
-    # # Create a heap with each passenger's departure time and the passenger object
-    # heap = [p for p in passengers]
-
-    # # Transform list x into a heap
-    # heapq.heapify(heap)
-
-    # # Continue until the heap is empty or the smallest departure time is greater than the cut-off time
-    # while heap and heap[0].askTimeToDeparture() <= cut_off_time:
-    #     # Remove and return the smallest departure time from the heap
-    #     p = heapq.heappop(heap)
-
-    # return [p for p in heap]
+    return [p for p in heap]
 
 
 def run_airport(payload):
@@ -114,7 +97,5 @@ def run_airport(payload):
             "sortedDepartureTimes": result['prioritised_filtered_list'],
             "numberOfRequests": result["total_number_of_requests"]
         })
-
-        # break
 
     return results
