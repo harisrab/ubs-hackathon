@@ -1,4 +1,4 @@
-import json5
+import json
 from typing import Optional
 
 from challanges.airport import run_airport
@@ -38,6 +38,6 @@ async def airport(request: Request):
     print("\n\n")
     print(f"[+] Result Returned {json5.dumps(jsonable_encoder(results))}")
 
-    return json5.dumps(jsonable_encoder(results))
+    return json.dumps(jsonable_encoder(results))
 
     # return JSONResponse(content=jsonable_encoder(results), media_type="application/json")
