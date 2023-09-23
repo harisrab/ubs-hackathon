@@ -2,7 +2,9 @@ from typing import Optional
 
 from challanges.airport import run_airport
 from fastapi import FastAPI, Request
+from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
@@ -30,4 +32,4 @@ async def airport(request: Request):
 
     print("Results: ", results)
 
-    return results
+    return JSONResponse(content=jsonable_encoder(results), media_type="application/json")
