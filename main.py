@@ -26,4 +26,8 @@ def read_root():
 async def airport(request: Request):
     payload = await request.json()
 
-    return run_airport(payload)
+    results = run_airport(payload)
+
+    print("Results: ", results)
+
+    return results

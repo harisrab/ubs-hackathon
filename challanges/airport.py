@@ -104,10 +104,10 @@ def run_airport(payload):
             "numberOfRequests": result["total_number_of_requests"]
         })
 
-        print({
-            "id": eachPayload["id"],
-            "sortedDepartureTimes": result['prioritised_filtered_list'],
-            "numberOfRequests": result["total_number_of_requests"]
-        })
+        # print({
+        #     "id": eachPayload["id"],
+        #     "sortedDepartureTimes": result['prioritised_filtered_list'],
+        #     "numberOfRequests": result["total_number_of_requests"]
+        # })
 
     return json.dumps(results)
