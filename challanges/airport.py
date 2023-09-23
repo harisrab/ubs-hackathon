@@ -74,7 +74,7 @@ def prioritisation_function(passengers, cut_off_time):
     heapq.heapify(heap)
 
     # Continue until the heap is empty or the smallest departure time is greater than the cut-off time
-    while heap and heap[0].askTimeToDeparture() < cut_off_time:
+    while heap and heap[0].askTimeToDeparture() <= cut_off_time:
         # Remove and return the smallest departure time from the heap
         p = heapq.heappop(heap)
 
@@ -94,7 +94,7 @@ def run_airport(payload):
 
         results.append({
             "id": eachPayload["id"],
-            "sortedDepartureTimes": result['prioritised_filtered_list'],
+            "sortedDepartureTimes": sorted(result['prioritised_filtered_list']),
             "numberOfRequests": result["total_number_of_requests"]
         })
 
