@@ -7,6 +7,7 @@ from typing import Dict, List
 
 
 class Passenger:
+
     def __init__(self, departureTime):
         self.departureTime = departureTime
         self.numberOfRequests = 0
@@ -75,6 +76,8 @@ def prioritisation_function(passengers, cut_off_time):
         departure_time = p.askTimeToDeparture()
         heapq.heappush(heap, (departure_time, p))
 
+    heapq.heapify(heap)
+
     while heap and heap[0][0] < cut_off_time:
         heapq.heappop(heap)
 
@@ -82,6 +85,7 @@ def prioritisation_function(passengers, cut_off_time):
 
 
 def run_airport(payload):
+
     results = []
 
     for eachPayload in payload:
