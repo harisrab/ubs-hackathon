@@ -18,8 +18,8 @@ class Passenger:
     def getNumberOfRequests(self):
         return self.numberOfRequests
 
-    # def __lt__(self, other):
-    #     return self.departureTime < other.departureTime
+    def __lt__(self, other):
+        return self.departureTime < other.departureTime
 
 
 def execute(prioritisation_function, passenger_data, cut_off_time):
